@@ -1,11 +1,11 @@
 .wrapper {
     width: 450px;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.1);
     color: #fff;
     border-radius: 8px;
     padding: 30px 40px;
     border: 2px solid rgba(255, 255, 255, .2);
-    backdrop-filter: blur(30px);
+    backdrop-filter: blur(10px);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
@@ -53,19 +53,32 @@
 }
 
 .remember-fogot label input {
-    accent-color: #fff;
+    accent-color: greenyellow;
     margin-right: 4px;
 }
 
 .remember-fogot a {
-    color: #fff;
     text-decoration: none;
+    position: relative;
+    color: #fff;
 }
-
-.remember-fogot a:hover {
-    text-decoration: underline;
+  
+.remember-fogot a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
 }
-
+  
+.remember-fogot a:hover::after {
+    transform: scaleX(1);
+}
+  
 .wrapper button {
     width: 100%;
     height: 45px;
@@ -78,7 +91,14 @@
     font-size: 16px;
     color: #333;
     font-weight: 700;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
+
+.wrapper button:hover {
+    background-color: greenyellow;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .2);
+}
+
 
 .wrapper .register-link {
     font-size: 14px;
@@ -90,8 +110,52 @@
     color: #fff;
     text-decoration: none;
     font-weight: 600;
+    position: relative;
 }
 
-.register-link p a:hover {
-    text-decoration: underline;
+.register-link p a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
 }
+
+.register-link p a:hover::after {
+    transform: scaleX(1);
+}
+
+@media only screen and (max-width: 600px) {
+    .wrapper {
+      width: 100%;
+      padding: 20px;
+    }
+  
+    .wrapper h1 {
+      font-size: 28px;
+    }
+  
+    .wrapper .input-box input {
+      padding: 15px 20px;
+    }
+  
+    .remember-fogot {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+  
+    .wrapper button {
+      height: 40px;
+      font-size: 14px;
+    }
+  
+    .register-link {
+      margin-top: 15px;
+    }
+  }
+  
